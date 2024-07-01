@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PelajaranController;
+use App\Http\Controllers\SekolahController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin.layouts.default');
 });
+Route::get('/pelajaran', [PelajaranController::class, 'index']);
+Route::get('/daftar_sekolah', [SekolahController::class, 'index']);
