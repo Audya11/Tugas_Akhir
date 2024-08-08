@@ -13,11 +13,16 @@ return new class extends Migration
     {
         Schema::create('sekolahs', function (Blueprint $table) {
             $table->id();
+            $table->string('type');
             $table->string('nama_sekolah');
             $table->string('paket');
             $table->string('status');
             $table->date('tanggal_kadaluarsa');
             $table->text('alamat');
+            $table->text('kelurahan');
+            $table->text('kecamatan');
+            $table->text('kota');
+            $table->text('provinsi');
             $table->timestamps();
         });
     }
