@@ -3,7 +3,7 @@
     <div>
         <div class="page-heading text-left ">
             <h3 class="mb-3 fs-5">Daftar Siswa</h3>
-            <a href="/daftar_siswa/create" class="btn collor-button btn-primary rounded " style="color: white;">tambah data <i class="fas fa-plus-square"></i></a>
+            <a href="/dashboard/daftar_siswa/create" class="btn collor-button btn-primary rounded " style="color: white;">tambah data <i class="fas fa-plus-square"></i></a>
         </div>
 
         <div class="card-body px-0 pb-2 fs-6 text-left">
@@ -80,19 +80,19 @@
                                         {{ $siswa->alamat }}</p>
                                 </td>
                                 <td class="align-middle justify-content-center align-items-center d-flex">
-                                    <a href="/daftar_siswa/{{ $siswa->id }}/edit"
+                                    <a href="/dashboard/daftar_siswa/{{ $siswa->id }}/edit"
                                         class="text-secondary font-weight-bold text-xs"
                                         data-toggle="tooltip" data-original-title="Edit user">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
-                                    <form action="/daftar_siswa/{{ $siswa->id }}" method="POST">
+                                    <form action="/dashboard/daftar_siswa/{{ $siswa->id }}" method="POST">
                                         @method('delete')
                                         @csrf
                                         <button class="border-0 bg-transparent"
                                             onclick="return confirm('Are you sure?')"> <i
                                                 class="bi bi-trash3"></i></button>
                                     </form>
-                                    <a href="/daftar_siswa/{{ $siswa->id }}/detail"
+                                    <a href="/dashboard/daftar_siswa/{{ $siswa->id }}/detail"
                                         class="text-secondary font-weight-bold text-xs"
                                         data-toggle="tooltip" data-original-title="Edit user">
                                         <i class="bi bi-info-circle"></i>

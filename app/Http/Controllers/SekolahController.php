@@ -93,7 +93,7 @@ class SekolahController extends Controller
         $sekolah->update($request->all());
     
         // Redirect back to the index route with a success message
-        return redirect('/daftar_sekolah')->with('success', 'Data Sekolah Berhasil Diperbarui');
+        return redirect('/dashboard/daftar_sekolah')->with('success', 'Data Sekolah Berhasil Diperbarui');
         
     }
 
@@ -104,7 +104,7 @@ class SekolahController extends Controller
     {
         $sekolah = Sekolah::where('id', $id)->first();
         $sekolah->delete();
-        return redirect('/daftar_sekolah')->with('success', 'Data Sekolah Berhasil Dihapus');
+        return redirect('/dashboard/daftar_sekolah')->with('success', 'Data Sekolah Berhasil Dihapus');
     }
 
     public function detail ($id)

@@ -68,14 +68,14 @@ class SiswaController extends Controller
     {
         $siswa = Siswa::findorfail($id);
         $siswa->update($request->all());
-        return redirect('/daftar_siswa')->with('success', 'Data Sekolah Berhasil Diperbarui');
+        return redirect('/dashboard/daftar_siswa')->with('success', 'Data Sekolah Berhasil Diperbarui');
     }
 
     public function destroy($id)
     {
         $siswa = Siswa::findorfail($id);
         $siswa->delete();
-        return redirect('/daftar_siswa')->with('success', 'Data Sekolah Berhasil Dihapus');
+        return redirect('/dashboard/daftar_siswa')->with('success', 'Data Sekolah Berhasil Dihapus');
     }
 
     public function detail ($id)

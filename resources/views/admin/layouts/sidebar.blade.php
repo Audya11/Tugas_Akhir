@@ -6,85 +6,59 @@
                 <ul class="menu">
 
 
-                    <li class="sidebar-item  ">
-                        <a href="/dashboard" class='nav-link  '>
+                    <li class="">
+                        <a href="/" class='nav-link ' class="sidebar-link">
                             <i class="bi bi-grid-fill"></i>
                             <span>Dashboard</span>
                         </a>
-
-
-                    </li>
-
-                    {{-- <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
-                            <i class="bi bi-stack"></i>
-                            <span>Master</span>
-                        </a>
-
-                        <ul class="submenu ">
-
-                            <li class="submenu-item  ">
-                                <a class="submenu-link " href="/pelajaran">Pelajaran</a>
-
-                            </li>
-
-                            <li class="submenu-item  ">
-                                <a href="component-alert.html" class="submenu-link">Paket Berlangganan</a>
-
-                            </li>
-
-                            <li class="submenu-item  ">
-                                <a href="component-badge.html" class="submenu-link">Metode Pembayaran</a>
-
-                            </li>
-
-                            <li class="submenu-item  ">
-                                <a href="component-breadcrumb.html" class="submenu-link">Kategori Paket</a>
-
-                            </li>
-
-
-
-                        </ul>
-
-
-                    </li> --}}
-
-                    <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
+                    </li> 
+ 
+                    
+                    <li class="sidebar-item" id="sekolah-item">
+                        <a href="/dashboard/daftar_sekolah" class='sidebar-link'>
                             <i class="bi bi-bank2"></i>
                             <span>Sekolah</span>
                         </a>
-
-                        <ul class="submenu ">
-
-                            <li class="submenu-item  ">
-                                <a href="/daftar_sekolah" class="submenu-link">Daftar Sekolah</a>
-
-                            </li>
-
-                            <li class="submenu-item  ">
-                                <a href="extra-component-divider.html" class="submenu-link">Pengaturan Masa Aktiv
-                                    Sekolah</a>
-
-                            </li>
-
-                            {{-- <li class="submenu-item  ">
-                                <a href="extra-component-date-picker.html" class="submenu-link">Permintaan Aktivasi</a>
-
-                            </li> --}}
-
-
-                        </ul>
-
-
+                    </li>
+                    <li class="sidebar-item" id="sekolah-item">
+                        <a href="/dashboard/daftar_siswa" class='sidebar-link'>
+                            <i class="bi bi-person"></i>
+                            <span>Siswa</span>
+                        </a>
                     </li>
 
+                    <script>
+                      document.addEventListener('DOMContentLoaded', function () {
+    // Seleksi semua item sidebar
+    const sidebarItems = document.querySelectorAll('.sidebar-item');
+
+    sidebarItems.forEach(function (item) {
+        item.addEventListener('click', function () {
+            // Hapus kelas 'active' dari semua item
+            sidebarItems.forEach(function (el) {
+                el.classList.remove('active');
+            });
+
+            // Tambahkan kelas 'active' pada item yang diklik
+            this.classList.add('active');
+        });
+    });
+
+    // Highlight the current page
+    const currentPath = window.location.pathname;
+    sidebarItems.forEach(function (item) {
+        const link = item.querySelector('a');
+        if (link && link.getAttribute('href') === currentPath) {
+            item.classList.add('active');
+        }
+    });
+});
+
+
+                    </script>
+
                     {{-- <li class="  has-sub"> --}}
-                        <a href="/daftar_siswa" class='sidebar-link'>
-                            <i class="bi bi-person-fill"></i>
-                            <span>Daftar Siswa</span>
-                        </a>
+                        
 
                         {{-- <ul class="submenu "> --}}
 
@@ -106,7 +80,7 @@
 
                     {{-- </li> --}}
 
-                    <li class="sidebar-item  has-sub">
+                    {{-- <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-person-workspace"></i>
                             <span>Guru</span>
@@ -124,10 +98,10 @@
 
                             </li> --}}
 
-                        </ul>
+                        {{-- </ul>
 
 
-                    </li>
+                    </li>  --}}
 
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
@@ -147,9 +121,15 @@
                                     Institusi</a>
 
                             </li>
-
                         </ul>
                     </li>
+                        <form class="" action="/sesi/logout" method="POST">
+                            @csrf
+                        <button class='btn btn-danger' type="submit" onclick="return confirm('Apakah anda yakin ingin keluar?')">
+                            <i class="bi bi-box-arrow-right"></i>
+                            <span>Logout</span>
+                        </button>
+                        </form>
                     {{-- <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-currency-dollar"></i>

@@ -75,7 +75,7 @@
                         <textarea id="alamat" name="alamat" disabled class="form-control border">{{ $sekolah->alamat }}</textarea>
                     </div>
 
-                    <a href="/daftar_sekolah" class="btn collor-button text-white shadow bg-primary" type="submit" name="submit">Kembali</a>
+                    <a href="/dashboard/daftar_sekolah" class="btn collor-button text-white shadow bg-primary" type="submit" name="submit">Kembali</a>
                 </form>
             </div>
         </div>

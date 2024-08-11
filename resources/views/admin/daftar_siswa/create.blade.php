@@ -23,7 +23,7 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="nama">Nama</label>
-                            <input type="text" id="nama" name="nama" required class="form-control border" placeholder="Masukkan Nama">
+                            <input type="text" id="nama" value="{{ old('nama') }}" name="nama" required class="form-control border"  placeholder="Masukkan Nama">
                         </div>
                         
                         <div class="col-md-6 mb-3">
@@ -38,7 +38,7 @@
 
                         <div class="col-md-6 mb-3">
                             <label for="nis">NIS</label>
-                            <input type="text" id="nis" name="nis" required class="form-control border @error('nis') is-invalid @enderror"  placeholder="Masukkan NIS">
+                            <input type="text" id="nis" name="nis" value="{{ old('nis') }}" required class="form-control border @error('nis') is-invalid @enderror"  placeholder="Masukkan NIS">
                             @error('nis')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -49,7 +49,7 @@
                         <div class="col-md-6 mb-3">
                             <label for="kelas">Kelas</label><br>
                             <select id="kelas" name="kelas" required class="form-select" aria-placeholder="Pilih Kelas">
-                                <option value="">Pilih Kelas</option>
+                                <option value="{{ old('kelas') }}">Pilih Kelas</option>
                                 <option value="10">10</option>
                                 <option value="11">11</option>
                                 <option value="12">12</option>

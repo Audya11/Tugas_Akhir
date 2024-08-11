@@ -97,7 +97,7 @@
                         <textarea id="alamat" name="alamat" class="form-control border" disabled>{{ $siswa->alamat }}</textarea>
                     </div>
 
-                    <a href="/daftar_siswa" class="btn collor-button text-white shadow bg-primary" type="button" >Kembali</a>
+                    <a href="/dashboard/daftar_siswa" class="btn collor-button text-white shadow bg-primary" type="button" >Kembali</a>
                 </form>
             </div>
         </div>

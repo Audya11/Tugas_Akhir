@@ -3,17 +3,8 @@
     <div>
         <div class="page-heading text-left ">
             <h3 class="mb-3 fs-5">Daftar Sekolah</h3>
-            <a href="/daftar_sekolah/create" class="btn collor-button btn-primary rounded " style="color: white;">tambah data <i class="fas fa-plus-square"></i></a>
+            <a href="/dashboard/daftar_sekolah/create" class="btn collor-button btn-primary rounded " style="color: white;">tambah data <i class="fas fa-plus-square"></i></a>
         </div>
-{{-- 
-        <form method="GET" action="{{ url('/daftar_sekolah') }}" class="form-inline mb-3">
-            <div class="form-group w-25">
-                <label for="filter">Jenjang</label>
-                <input type="text" name="filter" id="filter" value="{{ request()->input('filter') }}" class="form-control">
-            </div>
-                <button type="submit" class="btn btn-primary">Filter</button>
-                 <a href="{{ url('/daftar_sekolah') }}" class="btn btn-secondary">Reset</a>
-        </form> --}}
 
         <div class="card-body px-0 pb-2 fs-6 text-left">
             @if (session('success'))
@@ -79,12 +70,12 @@
                                         {{ $sekolah->alamat }}</p>
                                 </td>
                                 <td class="align-middle justify-content-center align-items-center d-flex">
-                                    <a href="/daftar_sekolah/{{ $sekolah->id }}/edit"
+                                    <a href="/dashboard/daftar_sekolah/{{ $sekolah->id }}/edit"
                                         class="text-secondary font-weight-bold text-xs"
                                         data-toggle="tooltip" data-original-title="Edit user">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
-                                    <form action="/daftar_sekolah/{{ $sekolah->id }}" method="POST">
+                                    <form action="/dashboard/daftar_sekolah/{{ $sekolah->id }}" method="POST">
                                         @method('delete')
                                         @csrf
                                         <button class="border-0 bg-transparent"
@@ -92,7 +83,7 @@
                                                 class="bi bi-trash3"></i></button>
                                     </form>
                                     
-                                    <a href="/daftar_sekolah/{{ $sekolah->id }}/detail"
+                                    <a href="/dashboard/daftar_sekolah/{{ $sekolah->id }}/detail"
                                         class="text-secondary font-weight-bold text-xs"
                                         data-toggle="tooltip" data-original-title="Edit user">
                                         <i class="bi bi-info-circle"></i>
