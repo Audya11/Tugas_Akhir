@@ -26,6 +26,12 @@
                             <span>Siswa</span>
                         </a>
                     </li>
+                    <li class="sidebar-item  " id="sekolah-item">
+                        <a href="/dashboard/staff" class='sidebar-link'>
+                            <i class="bi bi-person-vcard-fill"></i>
+                            <span>Petugas</span>
+                        </a>
+                    </li>
 
                     <script>
                       document.addEventListener('DOMContentLoaded', function () {
@@ -56,74 +62,8 @@
 
 
                     </script>
-
-                    {{-- <li class="  has-sub"> --}}
-                        
-
-                        {{-- <ul class="submenu "> --}}
-
-                            {{-- <li class="submenu-item  ">
-                                <a href="/daftar_siswa" class="submenu-link"> Daftar siswa</a>
-
-                            </li>
-                            {{-- <li class="submenu-item  ">
-                                <a href="layout-default.html" class="submenu-link">Pengaturan Kartu</a>
-
-                            </li>
-
-                            <li class="submenu-item  ">
-                                <a href="layout-vertical-1-column.html" class="submenu-link">Pengaturan Kata Sandi</a>
-
-                            </li> --}}
-
-                        {{-- </ul>  --}}
-
-                    {{-- </li> --}}
-
-                    {{-- <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
-                            <i class="bi bi-person-workspace"></i>
-                            <span>Guru</span>
-                        </a>
-
-                        <ul class="submenu ">
-
-                            <li class="submenu-item  ">
-                                <a href="layout-default.html" class="submenu-link">Daftar Guru</a>
-
-                            </li>
-
-                            {{-- <li class="submenu-item  ">
-                                <a href="layout-vertical-1-column.html" class="submenu-link">Pengaturan Kata Sandi</a>
-
-                            </li> --}}
-
-                        {{-- </ul>
-
-
-                    </li>  --}}
-
-                    <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
-                            <i class="bi bi-person-vcard-fill"></i>
-                            <span>Petugas</span>
-                        </a>
-
-                        <ul class="submenu ">
-
-                            <li class="submenu-item  ">
-                                <a href="layout-default.html" class="submenu-link"> Daftar Petugas</a>
-
-                            </li>
-
-                            <li class="submenu-item  ">
-                                <a href="layout-vertical-1-column.html" class="submenu-link">Daftar Admin
-                                    Institusi</a>
-
-                            </li>
-                        </ul>
-                    </li>
-                        <form class="" action="/sesi/logout" method="POST">
+                    
+                        <form class="mt-4" action="/sesi/logout" method="POST">
                             @csrf
                         <button class='btn btn-danger' type="submit" onclick="return confirm('Apakah anda yakin ingin keluar?')">
                             <i class="bi bi-box-arrow-right"></i>

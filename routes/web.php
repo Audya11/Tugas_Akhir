@@ -5,6 +5,9 @@ use App\Http\Controllers\SekolahController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\StaffController;
+use App\Models\Staff;
+use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -48,6 +51,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
 Route::get('/daftar_sekolah', [SekolahController::class, 'index'])->name('sekolah.all');
 Route::get('/sekolah/data', [SekolahController::class, 'getData'])->name('sekolah.data');
 Route::get('/daftar_siswa', [SiswaController::class, 'index'])->name('siswa.all');
+Route::get('/staff', [StaffController::class, 'index'])->name('staff.all');
 
 // CRUD Daftar Sekolah
 Route::get('/daftar_sekolah/create', [SekolahController::class, 'create']);
@@ -63,9 +67,17 @@ Route::get('/daftar_siswa/{id}/edit', [SiswaController::class, 'edit']);
 Route::put('/daftar_siswa/{id}', [SiswaController::class, 'update'])->name('siswa.update');
 Route::delete('/daftar_siswa/{id}', [SiswaController::class, 'destroy']);
 
+// CRUD Staff
+Route::get('/staff/create', [StaffController::class,'create']);
+Route::post('/staff', [StaffController::class,'store'])->name('staff.store');
+Route::get('/staff/{id}/edit', [StaffController::class,'edit']);
+Route::put('/staff/{id}', [StaffController::class,'update'])->name('staff.update');
+Route::delete('/staff/{id}', [StaffController::class,'destroy']);
+
 // View Detail
 Route::get('/daftar_sekolah/{id}/detail', [SekolahController::class, 'detail']);
 Route::get('/daftar_siswa/{id}/detail', [SiswaController::class, 'detail']);
+Route::get('/staff/{id}/detail', [StaffController::class, 'detail']);
 });
 
 // laporan dashboard
