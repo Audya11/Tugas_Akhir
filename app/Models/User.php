@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($password);
     }
+
+    public function school()
+    {
+        return $this->belongsToMany(Sekolah::class, 'school_user', 'user_id', 'sekolah_id');
+    }
 }

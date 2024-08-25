@@ -5,8 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use PhpParser\Node\NullableType;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -21,9 +20,8 @@ return new class extends Migration
             $table->string('jenis_kelamin');
             $table->string('agama');
             $table->string('kelas');
-            $table->string('password');
-            $table->string('email');
             $table->string('no_telp');
+            $table->string('average_score');
             $table->timestamps();
         });
     }

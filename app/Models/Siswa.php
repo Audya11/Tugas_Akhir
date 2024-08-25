@@ -15,9 +15,8 @@ class Siswa extends Model
         'jenis_kelamin',
         'agama',
         'kelas',
-        'password',
-        'email',
         'no_telp',
+        'average_score'
     ];
 
     public function sekolah()

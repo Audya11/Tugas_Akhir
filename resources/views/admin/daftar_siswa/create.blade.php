@@ -1,120 +1,129 @@
 @extends('admin.layouts.default')
 @section('content')
-<div class="container-fluid">
-    <div class="row">
-        <div class="collor-button shadow-primary border-radius-lg">
-            <h4 class="text-dark text-capitalize ps-3">Tambah data Siswa</h4>
-        </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="collor-button shadow-primary border-radius-lg">
+                <h4 class="text-dark text-capitalize ps-3">Tambah data Siswa</h4>
+            </div>
 
-        @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
-        <div class="card my-4 w-75">
-            <div class='container'>
-                <form action="{{ route('siswa.store') }}" method="POST" enctype="multipart/form-data" class="w-100 mt-4 mb-4">
-                    @csrf
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="nama">Nama</label>
-                            <input type="text" id="nama" value="{{ old('nama') }}" name="nama" required class="form-control border"  placeholder="Masukkan Nama">
-                        </div>
-                        
-                        <div class="col-md-6 mb-3">
-                            <label for="sekolah_id">Nama Sekolah</label>
-                            <select id="sekolah_id" name="sekolah_id" required class="form-select border">
-                                <option value="">Pilih Sekolah</option>
-                                @foreach($sekolahs as $sekolah)
-                                    <option value="{{ $sekolah->id }}" {{ $sekolah->id == $sekolah->id ? 'selected' : '' }}>{{ $sekolah->nama_sekolah }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="col-md-6 mb-3">
-                            <label for="nis">NIS</label>
-                            <input type="text" id="nis" name="nis" value="{{ old('nis') }}" required class="form-control border @error('nis') is-invalid @enderror"  placeholder="Masukkan NIS">
-                            @error('nis')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-
-                        <div class="col-md-6 mb-3">
-                            <label for="kelas">Kelas</label><br>
-                            <select id="kelas" name="kelas" required class="form-select" aria-placeholder="Pilih Kelas">
-                                <option value="{{ old('kelas') }}">Pilih Kelas</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
-                            </select>   
-                        </div>
-                        
-                        <div class="col-md-6 mb-3">
-                            <label>Jenis Kelamin</label><br>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="jenis_kelamin_laki_laki" name="jenis_kelamin" value="Laki-Laki" required>
-                                <label class="form-check-label" for="jenis_kelamin_laki_laki">Laki-Laki</label>
+            <div class="card my-4 w-75">
+                <div class='container'>
+                    <form action="{{ route('siswa.store') }}" method="POST" enctype="multipart/form-data"
+                        class="w-100 mt-4 mb-4">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="nama">Nama</label>
+                                <input type="text" id="nama" value="{{ old('nama') }}" name="nama" required
+                                    class="form-control border" placeholder="Masukkan Nama">
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="jenis_kelamin_perempuan" name="jenis_kelamin" value="Perempuan" required>
-                                <label class="form-check-label" for="jenis_kelamin_perempuan">Perempuan</label>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="sekolah_id">Nama Sekolah</label>
+                                <select id="sekolah_id" name="sekolah_id" required class="form-select border">
+                                    <option value="">Pilih Sekolah</option>
+                                    @foreach ($sekolahs as $sekolah)
+                                        <option value="{{ $sekolah->id }}"
+                                            {{ $sekolah->id == $sekolah->id ? 'selected' : '' }}>
+                                            {{ $sekolah->nama_sekolah }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="nis">NIS</label>
+                                <input type="text" id="nis" name="nis" value="{{ old('nis') }}" required
+                                    class="form-control border @error('nis') is-invalid @enderror"
+                                    placeholder="Masukkan NIS">
+                                @error('nis')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="kelas">Kelas</label><br>
+                                <select id="kelas" name="kelas" required class="form-select"
+                                    aria-placeholder="Pilih Kelas">
+                                    <option value="{{ old('kelas') }}">Pilih Kelas</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label>Jenis Kelamin</label><br>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" id="jenis_kelamin_laki_laki"
+                                        name="jenis_kelamin" value="Laki-Laki" required>
+                                    <label class="form-check-label" for="jenis_kelamin_laki_laki">Laki-Laki</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" id="jenis_kelamin_perempuan"
+                                        name="jenis_kelamin" value="Perempuan" required>
+                                    <label class="form-check-label" for="jenis_kelamin_perempuan">Perempuan</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="agama">Agama</label><br>
+                                <select id="agama" name="agama" required class="form-select">
+                                    <option value="">Pilih Agama</option>
+                                    <option value="Islam">Islam</option>
+                                    <option value="Kristen">Kristen</option>
+                                    <option value="Budha">Budha</option>
+                                    <option value="Hindu">Hindu</option>
+                                    <option value="Khonghucu">Khonghucu</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="no_telp" class="form-label">No. Telepon</label>
+                                <input type="text" id="no_telp" name="no_telp" required
+                                    class="form-control border @error('no_telp') is-invalid @enderror"
+                                    placeholder="Masukkan nomor telepon">
+                                @error('no_telp')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="alamat">Alamat</label>
+                                <textarea id="alamat" name="alamat" required class="form-control border" placeholder="Masukkan Alamat"></textarea>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="average_score">Nilai rata rata</label>
+                                <input type="text" id="average_score" value="{{ old('average_score') }}"
+                                    name="average_score" required class="form-control border"
+                                    placeholder="Masukkan Nilai rata rata siswa">
                             </div>
                         </div>
 
-                        <div class="col-md-6 mb-3">
-                            <label for="agama">Agama</label><br>
-                            <select id="agama" name="agama" required class="form-select">
-                                <option value="">Pilih Agama</option>
-                                <option value="Islam">Islam</option>
-                                <option value="Kristen">Kristen</option>
-                                <option value="Budha">Budha</option>
-                                <option value="Hindu">Hindu</option>
-                                <option value="Khonghucu">Khonghucu</option>
-                            </select>   
-                        </div>
-                        
-                        <div class="col-md-6 mb-3">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required class="form-control border" placeholder="Masukkan Email">
-                        </div>
-                        
-                        <div class="col-md-6 mb-3">
-                            <label for="no_telp" class="form-label">No. Telepon</label>
-                            <input type="text" id="no_telp" name="no_telp" required class="form-control border @error('no_telp') is-invalid @enderror" placeholder="Masukkan nomor telepon">
-                            @error('no_telp')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
+                        <button class="btn collor-button text-white shadow bg-primary" type="submit"
+                            name="submit">Save</button>
+                    </form>
 
-                        <div class="col-md-6 mb-3">
-                            <label for="password">Password</label>
-                            <input type="password" id="password" name="password" required class="form-control border" placeholder="Masukkan Password">
-                        </div>
-                    
-                    <div class="col-md-6 mb-3">
-                        <label for="alamat">Alamat</label>
-                        <textarea id="alamat" name="alamat" required class="form-control border" placeholder="Masukkan Alamat"></textarea>
-                    </div>
-                    </div>
-                
-                    <button class="btn collor-button text-white shadow bg-primary" type="submit" name="submit">Save</button>
-                </form>
-             
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-{{-- <script>
+    {{-- <script>
     const province = document.getElementById('provinsi');
     const city = document.getElementById('kota');
     const district = document.getElementById('kecamatan');
@@ -171,5 +180,5 @@
             });
     });
 </script> --}}
-   
+
 @endsection

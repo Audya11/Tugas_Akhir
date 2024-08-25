@@ -11,9 +11,9 @@
                             <i class="bi bi-grid-fill"></i>
                             <span>Dashboard</span>
                         </a>
-                    </li> 
- 
-                    
+                    </li>
+
+
                     <li class="sidebar-item" id="sekolah-item">
                         <a href="/dashboard/daftar_sekolah" class='sidebar-link'>
                             <i class="bi bi-bank2"></i>
@@ -33,43 +33,43 @@
                         </a>
                     </li>
 
+
                     <script>
-                      document.addEventListener('DOMContentLoaded', function () {
-    // Seleksi semua item sidebar
-    const sidebarItems = document.querySelectorAll('.sidebar-item');
+                        document.addEventListener('DOMContentLoaded', function() {
+                            // Seleksi semua item sidebar
+                            const sidebarItems = document.querySelectorAll('.sidebar-item');
 
-    sidebarItems.forEach(function (item) {
-        item.addEventListener('click', function () {
-            // Hapus kelas 'active' dari semua item
-            sidebarItems.forEach(function (el) {
-                el.classList.remove('active');
-            });
+                            sidebarItems.forEach(function(item) {
+                                item.addEventListener('click', function() {
+                                    // Hapus kelas 'active' dari semua item
+                                    sidebarItems.forEach(function(el) {
+                                        el.classList.remove('active');
+                                    });
 
-            // Tambahkan kelas 'active' pada item yang diklik
-            this.classList.add('active');
-        });
-    });
+                                    // Tambahkan kelas 'active' pada item yang diklik
+                                    this.classList.add('active');
+                                });
+                            });
 
-    // Highlight the current page
-    const currentPath = window.location.pathname;
-    sidebarItems.forEach(function (item) {
-        const link = item.querySelector('a');
-        if (link && link.getAttribute('href') === currentPath) {
-            item.classList.add('active');
-        }
-    });
-});
-
-
+                            // Highlight the current page
+                            const currentPath = window.location.pathname;
+                            sidebarItems.forEach(function(item) {
+                                const link = item.querySelector('a');
+                                if (link && link.getAttribute('href') === currentPath) {
+                                    item.classList.add('active');
+                                }
+                            });
+                        });
                     </script>
-                    
-                        <form class="mt-4" action="/sesi/logout" method="POST">
-                            @csrf
-                        <button class='btn btn-danger' type="submit" onclick="return confirm('Apakah anda yakin ingin keluar?')">
+
+                    <form class="mt-4" action="/sesi/logout" method="POST">
+                        @csrf
+                        <button class='btn btn-danger' type="submit"
+                            onclick="return confirm('Apakah anda yakin ingin keluar?')">
                             <i class="bi bi-box-arrow-right"></i>
                             <span>Logout</span>
                         </button>
-                        </form>
+                    </form>
                     {{-- <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-currency-dollar"></i>
@@ -92,5 +92,5 @@
                     </li> --}}
 
 
-</div>
-</div>
+            </div>
+        </div>
