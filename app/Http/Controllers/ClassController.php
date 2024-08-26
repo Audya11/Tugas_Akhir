@@ -12,7 +12,8 @@ class ClassController extends Controller
      */
     public function index()
     {
-        $classes = Classes::all();
+        $school_id = auth()->user()->school()->first()->id;
+        $classes   = Classes::where('school_id', $school_id)->get();
         return view('school.class.index', compact('classes'));
     }
 
@@ -29,7 +30,12 @@ class ClassController extends Controller
      */
     public function store(Request $request)
     {
-        Classes::create($request->all());
+        $school_id = auth()->user()->school()->first()->id;
+
+        Classes::create([
+            'name' => $request->name,
+            'school_id' => $school_id
+        ]);
         return redirect('/school/dashboard/class')->with('success', 'Kelas berhasil ditambahkan');
     }
 

@@ -9,5 +9,10 @@ class AcademicYear extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['year', 'status'];
+    protected $fillable = ['year', 'status', 'school_id'];
+
+    public function school()
+    {
+        return $this->belongsTo(Sekolah::class, 'school_id');
+    }
 }

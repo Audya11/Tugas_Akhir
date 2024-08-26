@@ -61,11 +61,11 @@ class DashboardController extends Controller
         $students = Siswa::where('sekolah_id', $sekolah_id)->get();
         // dd(auth()->user());
         $teachers     = Teacher::where('sekolah_id', $sekolah_id)->get();
-        $classes      = Classes::all();
-        $subclass     = Subclass::all();
-        $courses      = Course::all();
-        $academicYear = AcademicYear::all();
-        $major        = Major::all();
+        $classes      = Classes::where('school_id', $sekolah_id)->get();
+        $subclass     = Subclass::where('school_id', $sekolah_id)->get();
+        $courses      = Course::where('school_id', $sekolah_id)->get();
+        $academicYear = AcademicYear::where('school_id', $sekolah_id)->get();
+        $major        = Major::where('school_id', $sekolah_id)->get();
 
         return view('school.index', compact('students', 'teachers', 'classes', 'subclass', 'courses', 'academicYear', 'major'));
 

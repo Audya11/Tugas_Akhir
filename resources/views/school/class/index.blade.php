@@ -138,28 +138,28 @@
             searchInput.addEventListener('input', function() {
                 const query = searchInput.value.trim();
 
-                console.log(query);
                 fetch(`{{ route('kelas.search') }}?query=${encodeURIComponent(query)}`)
                     .then(response => response.json())
                     .then(data => {
                         tableBody.innerHTML = '';
 
                         if (data.length > 0) {
-                            data.forEach((class, index) => {
+                            data.forEach((kelas, index) => {
                                 const row = document.createElement('tr');
 
                                 row.innerHTML = `
-                                        <td class="align-middle text-center"><p class="text-xs text-secondary mb-0">${index + 1}</p></td>
-                                        <td class="align-middle text-center"><p class="text-xs text-secondary mb-0">${class.name}</p></td>
-                                        <td class="align-middle justify-content-center align-items-center d-flex gap-2">
-                                            <a href="/school/dashboard/class/${class.id}/edit" class="btn btn-warning" data-toggle="tooltip" data-original-title="Edit user"><i class="bi bi-pencil-square"></i></a>
-                                            <form action="/school/dashboard/class/${class.id}" method="POST">
-                                                @method('delete')
-                                                @csrf
-                                                <button class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="bi bi-trash3"></i></button>
-                                            </form>
-                                        </td>
-                                    `;
+                                <td class="align-middle text-center"><p class="text-xs text-secondary mb-0">${index + 1}</p></td>
+                                <td class="align-middle text-center"><p class="text-xs text-secondary mb-0">${kelas.name}</p></td>
+                                <td class="align-middle justify-content-center align-items-center d-flex gap-2">
+                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#classEditModal${kelas.id}"><i class="bi bi-pencil-square"></i></button>
+                                    
+                                    <form action="/school/dashboard/class/${kelas.id}" method="POST">
+                                        @method('delete')
+                                        @csrf
+                                        <button class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="bi bi-trash3"></i></button>
+                                    </form>
+                                </td>
+                            `;
 
                                 tableBody.appendChild(row);
                             });

@@ -12,7 +12,8 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teachers = Teacher::all();
+        $sekolah_id = auth()->user()->school()->first()->id;
+        $teachers   = Teacher::where('sekolah_id', $sekolah_id)->get();
         return view('school.teacher.index', compact('teachers'));
     }
 

@@ -12,7 +12,8 @@ class MajorController extends Controller
      */
     public function index()
     {
-        $majors = Major::all();
+        $school_id = auth()->user()->school()->first()->id;
+        $majors    = Major::where('school_id', $school_id)->get();
         return view('school.major.index', compact('majors'));
     }
 
@@ -29,7 +30,11 @@ class MajorController extends Controller
      */
     public function store(Request $request)
     {
-        Major::create($request->all());
+        $school_id = auth()->user()->school()->first()->id;
+        Major::create([
+            'name' => $request->name,
+            'school_id' => $school_id
+        ]);
         return redirect('/school/dashboard/major')->with('success', 'Jurusan berhasil diperbarui');
 
     }

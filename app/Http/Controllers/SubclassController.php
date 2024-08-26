@@ -13,7 +13,8 @@ class SubclassController extends Controller
      */
     public function index()
     {
-        $subclasses = Subclass::with('class')->get();
+        $school_id  = auth()->user()->school()->first()->id;
+        $subclasses = Subclass::with('class')->where('school_id', $school_id)->get();
         $classes    = Classes::all();
 
         return view('school.subclass.index', compact('subclasses', 'classes'));
@@ -32,7 +33,12 @@ class SubclassController extends Controller
      */
     public function store(Request $request)
     {
-        Subclass::create($request->all());
+        $school_id = auth()->user()->school()->first()->id;
+        Subclass::create([
+            'name' => $request->name,
+            'class_id' => $request->class_id,
+            'school_id' => $school_id
+        ]);
         return redirect('/school/dashboard/subclass')->with('success', 'Sub Kelas berhasil ditambahkan');
     }
 

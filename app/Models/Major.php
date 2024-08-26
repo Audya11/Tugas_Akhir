@@ -9,5 +9,10 @@ class Major extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'school_id'];
+
+    public function school()
+    {
+        return $this->belongsTo(Sekolah::class, 'school_id');
+    }
 }

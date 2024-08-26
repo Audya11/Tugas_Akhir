@@ -173,7 +173,7 @@
                                             <td class="align-middle text-center"><p class="text-xs text-secondary mb-0">${subkelas.class.name}</p></td>
                                             <td class="align-middle text-center"><p class="text-xs text-secondary mb-0">${subkelas.name}</p></td>
                                             <td class="align-middle justify-content-center align-items-center d-flex gap-2">
-                                                <a href="/school/dashboard/subclass/${subkelas.id}/edit" class="btn btn-warning" data-toggle="tooltip" data-original-title="Edit user"><i class="bi bi-pencil-square"></i></a>
+                                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#subclassEditModal${subkelas.id}"><i class="bi bi-pencil-square"></i></button>
                                                 <form action="/school/dashboard/subclass/${subkelas.id}" method="POST">
                                                     @method('delete')
                                                     @csrf

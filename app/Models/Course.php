@@ -16,5 +16,11 @@ class Course extends Model
         'type',
         'curriculum',
         'course_code',
+        'school_id',
     ];
+
+    public function school()
+    {
+        return $this->belongsTo(Sekolah::class, 'school_id');
+    }
 }

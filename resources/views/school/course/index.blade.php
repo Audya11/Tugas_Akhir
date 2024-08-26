@@ -113,16 +113,16 @@
                                         <option value="K13">K13</option>
                                     </select>
                                 </div>
-                                <div class="mb-3 col-md-6 " id="select-curriculum">
+                                <div class="mb-3 col-md-6 " id="select-course">
                                     <label for="recipient-name" class="col-form-label">Nama Pelajaran</label>
                                     <input type="text" name="courses_title" class="form-control" required>
                                 </div>
-                                <div class="mb-3 col-md-6 " id="select-curriculum">
+                                <div class="mb-3 col-md-6 " id="select-code">
                                     <label for="recipient-name" class="col-form-label">Kode Pelajaran</label>
                                     <input type="text" name="course_code" class="form-control" required>
 
                                 </div>
-                                <div class="mb-3 col-md-12 " id="select-curriculum">
+                                <div class="mb-3 col-md-12 " id="select-description">
                                     <label for="recipient-name" class="col-form-label">Deskripsi Pelajaran</label>
                                     <textarea name="courses_description" class="form-control" rows="3" required></textarea>
                                 </div>
@@ -203,10 +203,17 @@
             selectType.addEventListener('change', (event) => {
                 if (event.target.value === 'Kurikulum') {
                     selectCurriculum.style.display = 'block';
+                    selectCurriculum.querySelector('select').required =
+                        true; // Mengatur elemen select di dalamnya menjadi required
                 } else {
                     selectCurriculum.style.display = 'none';
+                    selectCurriculum.querySelector('select').required =
+                        false; // Mengatur elemen select di dalamnya menjadi tidak required
                 }
             });
+
+            // Jalankan event listener ketika halaman pertama kali dimuat
+            selectType.dispatchEvent(new Event('change'));
         </script>
 
         <script>
@@ -232,7 +239,8 @@
                                     <td class="align-middle text-center"><p class="text-xs text-secondary mb-0">${course.course_code}</p></td>
                                     <td class="align-middle text-center"><p class="text-xs text-secondary mb-0">${course.type}</p></td>
                                     <td class="align-middle justify-content-center align-items-center d-flex gap-2">
-                                        <a href="/school/dashboard/course/${course.id}/edit" class="btn btn-warning" data-toggle="tooltip" data-original-title="Edit user"><i class="bi bi-pencil-square"></i></a>
+                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#courseEditModal${course.id}"><i class="bi bi-pencil-square"></i></button>
+                                        
                                         <form action="/school/dashboard/course/${course.id}" method="POST">
                                             @method('delete')
                                             @csrf

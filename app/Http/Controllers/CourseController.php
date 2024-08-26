@@ -12,7 +12,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::all();
+        $sch_id  = auth()->user()->school()->first()->id;
+        $courses = Course::where('school_id', $sch_id)->get();
         return view('school.course.index', compact('courses'));
     }
 
@@ -29,7 +30,15 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        Course::create($request->all());
+        $school_id = auth()->user()->school()->first()->id;
+        Course::create([
+            'courses_title' => $request->courses_title,
+            'course_code' => $request->course_code,
+            'courses_description' => $request->courses_description,
+            'school_id' => $school_id,
+            'type' => $request->type,
+            'curriculum' => $request->curriculum
+        ]);
         return redirect('/school/dashboard/course')->with('success', 'Mata Pelajaran Berhasil Ditambahkan');
     }
 

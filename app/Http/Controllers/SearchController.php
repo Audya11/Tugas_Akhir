@@ -34,6 +34,8 @@ class SearchController extends Controller
 
     public function yearSearch(Request $request)
     {
+        $school_id = auth()->user()->school()->first()->id;
+
         $query = $request->input('query');
 
         // Pastikan query inputan tidak kosong sebelum melakukan pencarian
@@ -41,7 +43,7 @@ class SearchController extends Controller
             $academicYears = AcademicYear::where('year', 'LIKE', "%{$query}%")->get();
         } else {
             // Jika query kosong, kembalikan semua data atau data kosong
-            $academicYears = AcademicYear::all();
+            $academicYears = AcademicYear::where('school_id', $school_id)->get();
         }
 
         // Mengembalikan hasil sebagai JSON
@@ -49,6 +51,8 @@ class SearchController extends Controller
     }
     public function majorSearch(Request $request)
     {
+        $school_id = auth()->user()->school()->first()->id;
+
         $query = $request->input('query');
 
         // Pastikan query inputan tidak kosong sebelum melakukan pencarian
@@ -56,7 +60,7 @@ class SearchController extends Controller
             $majors = Major::where('name', 'LIKE', "%{$query}%")->get();
         } else {
             // Jika query kosong, kembalikan semua data atau data kosong
-            $majors = Major::all();
+            $majors = Major::where('school_id', $school_id)->get();
         }
 
         // Mengembalikan hasil sebagai JSON
@@ -64,6 +68,8 @@ class SearchController extends Controller
     }
     public function teacherSearch(Request $request)
     {
+        $school_id = auth()->user()->school()->first()->id;
+
         $query = $request->input('query');
 
         // Pastikan query inputan tidak kosong sebelum melakukan pencarian
@@ -74,7 +80,7 @@ class SearchController extends Controller
                 ->get();
         } else {
             // Jika query kosong, kembalikan semua data atau data kosong
-            $teachers = Teacher::with('school')->all();
+            $teachers = Teacher::with('school')->where('school_id', $school_id)->get();
         }
 
         // Mengembalikan hasil sebagai JSON
@@ -82,6 +88,8 @@ class SearchController extends Controller
     }
     public function kelasSearch(Request $request)
     {
+        $school_id = auth()->user()->school()->first()->id;
+
         $query = $request->input('query');
 
         // Pastikan query inputan tidak kosong sebelum melakukan pencarian
@@ -89,7 +97,7 @@ class SearchController extends Controller
             $clasess = Classes::where('name', 'LIKE', "%{$query}%")->get();
         } else {
             // Jika query kosong, kembalikan semua data atau data kosong
-            $clasess = Classes::all();
+            $clasess = Classes::where('school_id', $school_id)->get();
         }
 
         // Mengembalikan hasil sebagai JSON
@@ -97,6 +105,8 @@ class SearchController extends Controller
     }
     public function subClassSearch(Request $request)
     {
+        $school_id = auth()->user()->school()->first()->id;
+
         $query = $request->input('query');
 
         // Pastikan query inputan tidak kosong sebelum melakukan pencarian
@@ -104,7 +114,7 @@ class SearchController extends Controller
             $subclasses = Subclass::with('class')->where('name', 'LIKE', "%{$query}%")->get();
         } else {
             // Jika query kosong, kembalikan semua data atau data kosong
-            $subclasses = Subclass::with('class')->all();
+            $subclasses = Subclass::with('class')->where('school_id', $school_id)->get();
         }
 
         // Mengembalikan hasil sebagai JSON
@@ -112,6 +122,8 @@ class SearchController extends Controller
     }
     public function courseSearch(Request $request)
     {
+        $school_id = auth()->user()->school()->first()->id;
+
         $query = $request->input('query');
 
         // Pastikan query inputan tidak kosong sebelum melakukan pencarian
@@ -121,7 +133,7 @@ class SearchController extends Controller
                 ->get();
         } else {
             // Jika query kosong, kembalikan semua data atau data kosong
-            $courses = Course::all();
+            $courses = Course::where('school_id', $school_id)->get();
         }
 
         // Mengembalikan hasil sebagai JSON

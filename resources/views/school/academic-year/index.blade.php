@@ -170,7 +170,8 @@
                                         <td class="align-middle text-center"><p class="text-xs text-secondary mb-0">${year.year}</p></td>
                                         <td class="align-middle text-center"><p class="text-xs text-secondary mb-0">${year.status}</p></td>
                                         <td class="align-middle justify-content-center align-items-center d-flex gap-2">
-                                            <a href="/school/dashboard/academic-year/${year.id}/edit" class="btn btn-warning" data-toggle="tooltip" data-original-title="Edit user"><i class="bi bi-pencil-square"></i></a>
+                                          <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#academicEditModal${year.id}"><i class="bi bi-pencil-square"></i></button>
+
                                             <form action="/school/dashboard/academic-year/${year.id}" method="POST">
                                                 @method('delete')
                                                 @csrf

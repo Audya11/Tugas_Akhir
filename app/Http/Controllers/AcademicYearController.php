@@ -12,7 +12,8 @@ class AcademicYearController extends Controller
      */
     public function index()
     {
-        $academicYears = AcademicYear::all();
+        $sch_id        = auth()->user()->school()->first()->id;
+        $academicYears = AcademicYear::where('school_id', $sch_id)->get();
         return view('school.academic-year.index', compact('academicYears'));
     }
 
@@ -29,12 +30,12 @@ class AcademicYearController extends Controller
      */
     public function store(Request $request)
     {
-
-
-
+        $school_id = auth()->user()->school()->first()->id;
+        // dd($school_id);
         AcademicYear::create([
             'year' => $request->year,
-            'status' => $request->status
+            'status' => $request->status,
+            'school_id' => $school_id
         ]);
 
         return redirect('/school/dashboard/academic-year')->with('success', 'Data Akademik Disimpan');
